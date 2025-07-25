@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>כדאי לדעת - האתר לחיים הטובים</title>
+    <meta name="description" content="טיפים והמלצות, כשמו כן הוא. צוות מיומן של כותבים בתחומי האוכל, האמנות, התרבות והפנאי מעלה מידע, טיפים והמלצות שכדאי לדעת">
+    
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .site-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .site-title a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .site-subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        /* Navigation */
+        .nav {
+            background: rgba(255,255,255,0.1);
+            border-radius: 30px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 0;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main {
+            padding: 40px 0;
+            min-height: 70vh;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        /* Articles */
+        .articles {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .article {
+            padding: 25px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 25px;
+        }
+
+        .article:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .article-title {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+
+        .article-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .article-title a:hover {
+            color: #e74c3c;
+        }
+
+        .article-excerpt {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .article-meta {
+            font-size: 0.9em;
+            color: #888;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .read-more {
+            color: #e74c3c;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.3s ease;
+        }
+
+        .read-more:hover {
+            opacity: 0.8;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .widget {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .widget-title {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 10px;
+        }
+
+        .category-list {
+            list-style: none;
+        }
+
+        .category-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .category-item a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .category-item a:hover {
+            color: #e74c3c;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            color: #e74c3c;
+        }
+
+        .footer-section p, .footer-section li {
+            color: #bdc3c7;
+            line-height: 1.6;
+        }
+
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: #e74c3c;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 20px;
+            font-size: 0.9em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .nav-list {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .site-title {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        /* Page Content */
+        .page-content {
+            display: none;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        .page-content h1 {
+            font-size: 2.2em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="site-title">
+                <a href="#" onclick="showPage('home')">כדאי לדעת</a>
+            </h1>
+            <p class="site-subtitle">האתר לחיים הטובים</p>
+            
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#" class="nav-link active" onclick="showPage('home')" id="nav-home">בית</a></li>
+                    <li><a href="#" class="nav-link" onclick="showPage('books')" id="nav-books">ספרים</a></li>
+                    <li><a href="#" class="nav-link" onclick="showPage('restaurants')" id="nav-restaurants">מסעדות</a></li>
+                    <li><a href="#" class="nav-link" onclick="showPage('shopping')" id="nav-shopping">צרכנות</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Home Page -->
+            <div id="home-page" class="page-content active">
+                <div class="content-grid">
+                    <section class="articles">
+                        <article class="article">
+                            <h2 class="article-title">
+                                <a href="#">הגענו אל סניף נשר של BULLS, ולא מצאנו בו את הבעלים רז ליבזון</a>
+                            </h2>
+                            <div class="article-excerpt">
+                                הסיבה: רז, שמשרת במילואים בתפקיד פיקודי משמעותי, בקושי מגיע לשם מאז פרוץ המלחמה. אל דאגה, הצוות המסור מתפעל את המקום היטב. מצדיעים לרז ולכל האנשים הטובים שמגינים עלינו...
+                            </div>
+                            <div class="article-meta">
+                                <span>קטגוריה: מסעדות</span>
+                                <span>תאריך: יולי 2025</span>
+                                <a href="#" class="read-more">קרא עוד →</a>
+                            </div>
+                        </article>
+
+                        <article class="article">
+                            <h2 class="article-title">
+                                <a href="#">אחרי כמה שנים בהן לא ביקרנו במסעדת מזון הרחוב האסיאתית ווק סטריט</a>
+                            </h2>
+                            <div
