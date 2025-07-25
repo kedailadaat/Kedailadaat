@@ -6,6 +6,13 @@
     <title>כדאי לדעת - האתר לחיים הטובים</title>
     <meta name="description" content="טיפים והמלצות, כשמו כן הוא. צוות מיומן של כותבים בתחומי האוכל, האמנות, התרבות והפנאי מעלה מידע, טיפים והמלצות שכדאי לדעת">
     
+    <!-- Accessibility meta tags -->
+    <meta name="theme-color" content="#8b0000">
+    <meta name="color-scheme" content="light">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    
     <style>
         /* Reset */
         * {
@@ -18,7 +25,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f8f9fa;
+            background-color: #8b0000;
             direction: rtl;
             text-align: right;
         }
@@ -31,7 +38,7 @@
 
         /* Header */
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
             color: white;
             padding: 20px 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -59,13 +66,117 @@
 
         /* Navigation */
         .nav {
-            background: rgba(255,255,255,0.1);
-            border-radius: 30px;
-            padding: 10px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 0;
+            padding: 15px 0;
             text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .nav-icon {
+            color: #e74c3c;
+            font-size: 1.2em;
+            text-decoration: none;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .nav-icon:hover {
+            background: rgba(231, 76, 60, 0.1);
         }
 
         .nav-list {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin: 0;
+            flex: 1;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: #e74c3c;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #e74c3c;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.95em;
+            background: white;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: #e74c3c;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-link.dropdown::after {
+            content: "▼";
+            font-size: 0.8em;
+            margin-right: 5px;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .contact-text {
+            color: #e74c3c;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+
+        .about-btn {
+            background: #e74c3c;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .about-btn:hover {
+            background: #c0392b;
+            transform: translateY(-1px);
+        }
+
+        /* Secondary nav */
+        .secondary-nav {
+            background: rgba(139, 0, 0, 0.9);
+            padding: 8px 0;
+            text-align: center;
+        }
+
+        .secondary-nav-list {
             list-style: none;
             display: flex;
             justify-content: center;
@@ -73,18 +184,18 @@
             margin: 0;
         }
 
-        .nav-link {
+        .secondary-nav-link {
             color: white;
             text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
+            font-size: 0.9em;
             font-weight: 500;
+            padding: 5px 15px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
         }
 
-        .nav-link:hover, .nav-link.active {
+        .secondary-nav-link:hover {
             background: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
         }
 
         /* Main Content */
@@ -122,7 +233,7 @@
         .article-title {
             font-size: 1.4em;
             margin-bottom: 15px;
-            color: #2c3e50;
+            color: #c0392b;
             line-height: 1.4;
         }
 
@@ -173,13 +284,14 @@
             background: white;
             border-radius: 15px;
             padding: 25px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.1);
         }
 
         .widget-title {
             font-size: 1.3em;
             margin-bottom: 20px;
-            color: #2c3e50;
+            color: #c0392b;
             border-bottom: 3px solid #e74c3c;
             padding-bottom: 10px;
         }
@@ -244,6 +356,33 @@
         }
 
         /* Responsive */
+        @media (max-width: 968px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-list {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+            }
+            
+            .nav-link {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+            
+            .nav-right {
+                order: -1;
+            }
+            
+            .secondary-nav-list {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+        }
+
         @media (max-width: 768px) {
             .content-grid {
                 grid-template-columns: 1fr;
@@ -253,6 +392,12 @@
             .nav-list {
                 flex-direction: column;
                 gap: 10px;
+                width: 100%;
+            }
+            
+            .nav-link {
+                width: 100%;
+                text-align: center;
             }
             
             .site-title {
@@ -261,6 +406,15 @@
             
             .container {
                 padding: 0 15px;
+            }
+            
+            .nav-icons {
+                justify-content: center;
+            }
+            
+            .secondary-nav-list {
+                flex-direction: column;
+                gap: 5px;
             }
         }
 
@@ -275,7 +429,7 @@
 
         .page-content h1 {
             font-size: 2.2em;
-            color: #2c3e50;
+            color: #c0392b;
             margin-bottom: 20px;
             border-bottom: 3px solid #e74c3c;
             padding-bottom: 10px;
@@ -284,38 +438,101 @@
 </head>
 
 <body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+    
     <!-- Header -->
-    <header class="header">
+    <header class="header" role="banner">
         <div class="container">
             <h1 class="site-title">
-                <a href="#" onclick="showPage('home')">כדאי לדעת</a>
+                <a href="#" onclick="showPage('home')" aria-label="כדאי לדעת - עמוד הבית">כדאי לדעת</a>
             </h1>
-            <p class="site-subtitle">האתר לחיים הטובים</p>
-            
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li><a href="#" class="nav-link active" onclick="showPage('home')" id="nav-home">בית</a></li>
-                    <li><a href="#" class="nav-link" onclick="showPage('books')" id="nav-books">ספרים</a></li>
-                    <li><a href="#" class="nav-link" onclick="showPage('restaurants')" id="nav-restaurants">מסעדות</a></li>
-                    <li><a href="#" class="nav-link" onclick="showPage('shopping')" id="nav-shopping">צרכנות</a></li>
-                </ul>
-            </nav>
+            <p class="site-subtitle" aria-describedby="site-description">האתר לחיים הטובים</p>
+            <div id="site-description" class="sr-only">אתר טיפים והמלצות בתחומי האוכל, התרבות והפנאי</div>
         </div>
+        
+        <!-- Main Navigation -->
+        <nav class="nav" role="navigation" aria-label="תפריט ראשי">
+            <div class="nav-container">
+                <!-- Left Icons -->
+                <div class="nav-icons">
+                    <a href="#" class="nav-icon" aria-label="חיפוש באתר" title="חיפוש">🔍</a>
+                    <a href="#" class="nav-icon" aria-label="שיתוף" title="שיתוף">📤</a>
+                    <a href="#" class="nav-icon" aria-label="סגור" title="סגור">✕</a>
+                </div>
+                
+                <!-- Main Menu -->
+                <ul class="nav-list" role="menubar">
+                    <li class="nav-item" role="none">
+                        <a href="#" class="nav-link active" onclick="showPage('home')" id="nav-home" role="menuitem" aria-current="page">בית</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="#" class="nav-link dropdown" onclick="showPage('food')" id="nav-food" role="menuitem">אוכל</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="#" class="nav-link dropdown" onclick="showPage('lifestyle')" id="nav-lifestyle" role="menuitem">Life-Style</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="#" class="nav-link dropdown" onclick="showPage('culture')" id="nav-culture" role="menuitem">תרבות ובידור</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="#" class="nav-link dropdown" onclick="showPage('arts')" id="nav-arts" role="menuitem">אמנות</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a href="#" class="nav-link dropdown" onclick="showPage('shopping')" id="nav-shopping" role="menuitem">צרכנות</a>
+                    </li>
+                </ul>
+                
+                <!-- Right Side -->
+                <div class="nav-right">
+                    <span class="contact-text">צור קשר</span>
+                    <a href="#" class="about-btn" onclick="showPage('about')">אודות</a>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Secondary Navigation -->
+        <nav class="secondary-nav" role="navigation" aria-label="תפריט משני">
+            <ul class="secondary-nav-list">
+                <li><a href="#" class="secondary-nav-link" onclick="showPage('books')">ספרים</a></li>
+                <li><a href="#" class="secondary-nav-link" onclick="showPage('restaurants')">מסעדות</a></li>
+                <li><a href="#" class="secondary-nav-link" onclick="showPage('shopping')">Shopping</a></li>
+                <li><a href="#" class="secondary-nav-link" onclick="showPage('reviews')">ביקורות</a></li>
+                <li><a href="#" class="secondary-nav-link" onclick="showPage('recommendations')">המלצות</a></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- Main Content -->
-    <main class="main">
+    <main class="main" id="main-content" role="main" aria-label="תוכן ראשי">
         <div class="container">
             <!-- Home Page -->
-            <div id="home-page" class="page-content active">
+            <section id="home-page" class="page-content active" aria-labelledby="home-title">
+                <h2 id="home-title" class="sr-only">עמוד הבית - מאמרים אחרונים</h2>
                 <div class="content-grid">
-                    <section class="articles">
+                    <section class="articles" aria-labelledby="recent-articles">
+                        <h2 id="recent-articles" class="sr-only">מאמרים אחרונים</h2>
+                        
+                        <article class="article" role="article" aria-labelledby="article-1">
+                            <h3 class="article-title" id="article-1">
+                                <a href="#" aria-describedby="article-1-meta">הגענו אל סניף נשר של BULLS, ולא מצאנו בו את הבעלים רז ליבזון</a>
+                            </h3>
+                            <div class="article-excerpt" role="text">
+                                הסיבה: רז, שמשרת במילואים בתפקיד פיקודי משמעותי, בקושי מגיע לשם מאז פרוץ המלחמה. אל דאגה, הצוות המסור מתפעל את המקום היטב. מצדיעים לרז ולכל האנשים הטובים שמגינים עלינו...
+                            </div>
+                            <div class="article-meta" id="article-1-meta" aria-label="פרטי המאמר">
+                                <span>קטגוריה: מסעדות</span>
+                                <span>תאריך: יולי 2025</span>
+                                <a href="#" class="read-more" aria-label="קרא עוד על סניף נשר של BULLS">קרא עוד →</a>
+                            </div>
+                        </article>
+
                         <article class="article">
                             <h2 class="article-title">
-                                <a href="#">הגענו אל סניף נשר של BULLS, ולא מצאנו בו את הבעלים רז ליבזון</a>
+                                <a href="#">אחרי כמה שנים בהן לא ביקרנו במסעדת מזון הרחוב האסיאתית ווק סטריט</a>
                             </h2>
                             <div class="article-excerpt">
-                                הסיבה: רז, שמשרת במילואים בתפקיד פיקודי משמעותי, בקושי מגיע לשם מאז פרוץ המלחמה. אל דאגה, הצוות המסור מתפעל את המקום היטב. מצדיעים לרז ולכל האנשים הטובים שמגינים עלינו...
+                                במרכז הכרמל, חזרנו לשם השבוע. לשמחתנו, היא נותרה כפי שהיתה – מקום מומלץ למי שרוצה לאכול טעים, בריא ובזול. נוספו גם לא מעט אופציות חדשות...
                             </div>
                             <div class="article-meta">
                                 <span>קטגוריה: מסעדות</span>
@@ -326,6 +543,488 @@
 
                         <article class="article">
                             <h2 class="article-title">
-                                <a href="#">אחרי כמה שנים בהן לא ביקרנו במסעדת מזון הרחוב האסיאתית ווק סטריט</a>
+                                <a href="#">בחודש ספטמבר התייצבנו בקניון חוצות אלונים</a>
                             </h2>
-                            <div
+                            <div class="article-excerpt">
+                                כדי לפגוש את הפיטמאסטר אבי ברקו, מיודענו. אלוף בשרים ידוע במחוזותינו, שביומיום שלו הוא עובד כמהנדס חשמל ואלקטרוניקה באינטל...
+                            </div>
+                            <div class="article-meta">
+                                <span>קטגוריה: מסעדות</span>
+                                <span>תאריך: יולי 2025</span>
+                                <a href="#" class="read-more">קרא עוד →</a>
+                            </div>
+                        </article>
+
+                        <article class="article">
+                            <h2 class="article-title">
+                                <a href="#">ההיכרות הראשונית שלי עם גיל בן עברי התחילה לפני פרוץ הקורונה</a>
+                            </h2>
+                            <div class="article-excerpt">
+                                הגעתי אז למסעדה שלו, "זברה", שמסתתרת במרכז המסחרי של הכרמל הצרפתי, בעקבות המלצתו של חברי הטוב ליאור פרי...
+                            </div>
+                            <div class="article-meta">
+                                <span>קטגוריה: מסעדות</span>
+                                <span>תאריך: יולי 2025</span>
+                                <a href="#" class="read-more">קרא עוד →</a>
+                            </div>
+                        </article>
+                    </section>
+
+                    <aside class="sidebar" role="complementary" aria-label="תוכן משלים">
+                        <section class="widget" aria-labelledby="categories-title">
+                            <h3 class="widget-title" id="categories-title">קטגוריות</h3>
+                            <nav aria-label="ניווט קטגוריות">
+                                <ul class="category-list" role="list">
+                                    <li class="category-item" role="listitem"><a href="#" onclick="showPage('books')" aria-label="עבור לקטגוריית ספרים">ספרים (2023)</a></li>
+                                    <li class="category-item" role="listitem"><a href="#" onclick="showPage('books')" aria-label="עבור לספרים משנת 2022">ספרים (2022)</a></li>
+                                    <li class="category-item" role="listitem"><a href="#" onclick="showPage('books')" aria-label="עבור לספרים משנת 2021">ספרים (2021)</a></li>
+                                    <li class="category-item" role="listitem"><a href="#" onclick="showPage('restaurants')" aria-label="עבור לקטגוריית מסעדות">מסעדות</a></li>
+                                    <li class="category-item" role="listitem"><a href="#" onclick="showPage('shopping')" aria-label="עבור לקטגוריית צרכנות">צרכנות</a></li>
+                                </ul>
+                            </nav>
+                        </section>
+
+                        <section class="widget" aria-labelledby="about-title">
+                            <h3 class="widget-title" id="about-title">אודותינו</h3>
+                            <p role="text">טיפים והמלצות, כשמו כן הוא. צוות מיומן של כותבים בתחומי האוכל, האמנות, התרבות והפנאי מעלה מידע, טיפים והמלצות שכדאי לדעת.</p>
+                        </section>
+
+                        <section class="widget" aria-labelledby="search-title">
+                            <h3 class="widget-title" id="search-title">חיפוש</h3>
+                            <form role="search" aria-label="חיפוש באתר">
+                                <label for="search-input" class="sr-only">חפש תוכן באתר</label>
+                                <input type="search" 
+                                       id="search-input"
+                                       placeholder="חפש באתר..." 
+                                       style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; direction: rtl;"
+                                       aria-describedby="search-help">
+                                <div id="search-help" class="sr-only">הזן מילות חיפוש ולחץ Enter</div>
+                            </form>
+                        </section>
+                    </aside>
+                </div>
+            </div>
+
+            <!-- Books Page -->
+            <div id="books-page" class="page-content">
+                <div class="content-grid">
+                    <section class="articles">
+                        <h1>ביקורות ספרים</h1>
+                        
+                        <article class="article">
+                            <h2 class="article-title">
+                                <a href="#">ואן טולקן מחפש את המפתח למגפת ההשמנה</a>
+                            </h2>
+                            <div class="article-excerpt">
+                                ומוצא שהחשודים המרכזיים – צריכת יתר של סוכר או של שומן, או העדר פעילות גופנית מספיקה – אמנם לא מועילים, אבל האשמה העיקרית נעוצה בכוח הממכר של מזון אולטרה-מעובד...
+                            </div>
+                            <div class="article-meta">
+                                <span>קטגוריה: ספרים</span>
+                                <span>תאריך: יולי 2025</span>
+                                <a href="#" class="read-more">קרא עוד →</a>
+                            </div>
+                        </article>
+
+                        <article class="article">
+                            <h2 class="article-title">
+                                <a href="#">הספר מספק ניתוח מעמיק של מנהיגות בהקשרים מגוונים</a>
+                            </h2>
+                            <div class="article-excerpt">
+                                החל מהצבא, דרך ארגונים חברתיים ועסקיים ועד לזירה הפוליטית, חושף את הדינמיקה המורכבת של הובלת אנשים בסביבות שונות, ומציג תובנות מפתיעות...
+                            </div>
+                            <div class="article-meta">
+                                <span>קטגוריה: ספרים</span>
+                                <span>תאריך: יולי 2025</span>
+                                <a href="#" class="read-more">קרא עוד →</a>
+                            </div>
+                        </article>
+
+                        <article class="article">
+                            <h2 class="article-title">
+                                <a href="#">בן סובל מכאב ראש קשה שנים רבות</a>
+                            </h2>
+                            <div class="article-excerpt">
+                                שום טיפול לא מועיל לו, והכאב משתלט על חייו. מתוך ייאוש הוא פונה לטיפול פסיכולוגי. האם יצליח לגלות את מקור הכאב – ולהשתחרר ממנו? מסע של גילוי עצמי שהוא גם סיפור נוגע ללב...
+                            </div>
+                            <div class="article-meta">
+                                <span>קטגוריה: ספרים</span>
+                                <span>תאריך: יולי 2025</span>
+                                <a href="#" class="read-more">קרא עוד →</a>
+                            </div>
+                        </article>
+                    </section>
+
+                    <aside class="sidebar">
+                        <div class="widget">
+                            <h3 class="widget-title">קטגוריות</h3>
+                            <ul class="category-list">
+                                <li class="category-item"><a href="#" onclick="showPage('books')" style="color: #e74c3c; font-weight: bold;">ספרים (2023)</a></li>
+                                <li class="category-item"><a href="#" onclick="showPage('books')">ספרים (2022)</a></li>
+                                <li class="category-item"><a href="#" onclick="showPage('books')">ספרים (2021)</a></li>
+                                <li class="category-item"><a href="#" onclick="showPage('restaurants')">מסעדות</a></li>
+                                <li class="category-item"><a href="#" onclick="showPage('shopping')">צרכנות</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="widget">
+                            <h3 class="widget-title">אודותינו</h3>
+                            <p>ביקורות והמלצות ספרים מעולמות הספרות, הביוגרפיה והעיון.</p>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+
+            <!-- Restaurants Page -->
+            <div id="restaurants-page" class="page-content">
+                <div class="content-grid">
+                    <section class="articles">
+                        <h1>ביקורות מסעדות</h1>
+                        
+                        <article class="article">
+                            <h2 class="article-title">
+                                <a href="#">קרודו: רחוב הנמל, פינת צפון איטליה</a>
+                            </h2>
+                            <div class="article-excerpt">
+                                לפני שלושה חודשים עשיתי את דרכי ברחוב הנמל, ובעודי צועד שמעתי מישהו שקורא בשמי. אלה היו עלאא מוסא ואחמד אסאדי, הבעלים של מסעדת לוקס...
+                            </div>
+                            <div class="article-meta">
+                                <span>קטגוריה: מסעדות</span>
+                                <span>תאריך: יולי 2025</span>
+                                <a href="#" class="read-more">קרא עוד →</a>
+                            </div>
+                        </article>
+
+                        <article class="article">
+                            <h2 class="article-title">
+                                <a href="#">בורגר דין: עוספייא על המפה</a>
+                            </h2>
+                            <div class="article-excerpt">
+                                בתחילת השבוע התקשר אליי ידידי בני יזרעאל: "מה אתה עושה מחר בערב?" "עובד," עניתי. "יש לי הרצאה". "ובצהרים?" "עובד," עניתי. "יש לי פגישות"...
+                            </div>
+                            <div class="article-meta">
+                                <span>קטגוריה: מסעדות</span>
+                                <span>תאריך: יולי 2025</span>
+                                <a href="#" class="read-more">קרא עוד →</a>
+                            </div>
+                        </article>
+
+                        <article class="article">
+                            <h2 class="article-title">
+                                <a href="#">ח'אלד עדוי: ארוחה של דו קיום</a>
+                            </h2>
+                            <div class="article-excerpt">
+                                השבוע הגעתי אל המסעדה המזרחית הוותיקה ח'אלד עדוי, שפועלת משנת 1978, וממוקמת בתחנת הדלק בכביש דורי, נווה שאנן...
+                            </div>
+                            <div class="article-meta">
+                                <span>קטגוריה: מסעדות</span>
+                                <span>תאריך: יולי 2025</span>
+                                <a href="#" class="read-more">קרא עוד →</a>
+                            </div>
+                        </article>
+                    </section>
+
+                    <aside class="sidebar">
+                        <div class="widget">
+                            <h3 class="widget-title">קטגוריות</h3>
+                            <ul class="category-list">
+                                <li class="category-item"><a href="#" onclick="showPage('books')">ספרים (2023)</a></li>
+                                <li class="category-item"><a href="#" onclick="showPage('books')">ספרים (2022)</a></li>
+                                <li class="category-item"><a href="#" onclick="showPage('books')">ספרים (2021)</a></li>
+                                <li class="category-item"><a href="#" onclick="showPage('restaurants')" style="color: #e74c3c; font-weight: bold;">מסעדות</a></li>
+                                <li class="category-item"><a href="#" onclick="showPage('shopping')">צרכנות</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="widget">
+                            <h3 class="widget-title">אודותינו</h3>
+                            <p>סקירת מסעדות, בתי קפה ופאבים באזור חיפה והצפון על ידי מבקר המסעדות הוותיק יורם מארק-רייך.</p>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+
+            <!-- Shopping Page -->
+            <div id="shopping-page" class="page-content">
+                <div class="content-grid">
+                    <section class="articles">
+                        <h1>טיפי צרכנות</h1>
+                        
+                        <article class="article">
+                            <h2 class="article-title">
+                                <a href="#">סנו מרחיבה את סדרת 99.9% ומשיקה שני מוצרים נוספים</a>
+                            </h2>
+                            <div class="article-excerpt">
+                                המיועדים לרצפה: 99.9% נוזל לחיטוי וניקוי רצפות - הנוזל מתאים לכל סוגי הרצפות ומבטיח השמדה של 99.9% מהחיידקים. מהיום – הרצפה גם נקיה ומבריקה וגם מחוטאת מחיידקים...
+                            </div>
+                            <div class="article-meta">
+                                <span>קטגוריה: צרכנות</span>
+                                <span>תאריך: יולי 2025</span>
+                                <a href="#" class="read-more">קרא עוד →</a>
+                            </div>
+                        </article>
+
+                        <article class="article">
+                            <h2 class="article-title">
+                                <a href="#">לא יודע איך זה אצלכם, אבל אצלנו בחיפה הנמלים מגיחות מכל מקום</a>
+                            </h2>
+                            <div class="article-excerpt">
+                                בית פרטי של שלוש קומות, הנמלים מגיחות מכל מקום. אין להן פחד גבהים, הן זריזות, הן מגיעות בטורים ארוכים ואינסופיים, והן נעלמות לתוך סדקים וחורים נעלמים, כמו במעשה כשפים. אז מה עושים?
+                            </div>
+                            <div class="article-meta">
+                                <span>קטגוריה: צרכנות</span>
+                                <span>תאריך: יולי 2025</span>
+                                <a href="#" class="read-more">קרא עוד →</a>
+                            </div>
+                        </article>
+
+                        <article class="article">
+                            <h2 class="article-title">
+                                <a href="#">לסדרת סנו JAVEL הצטרף מוצר חדש - מגבונים לניקוי</a>
+                            </h2>
+                            <div class="article-excerpt">
+                                בתוספת אקונומיקה, המיועדים לשמירה על ההיגיינה בבית ובסביבתו ומתאימים לניקוי כיורים, אמבט, מושב אסלה, חרסינה, שיש, קרמיקה ועוד...
+                            </div>
+                            <div class="article-meta">
+                                <span>קטגוריה: צרכנות</span>
+                                <span>תאריך: יולי 2025</span>
+                                <a href="#" class="read-more">קרא עוד →</a>
+                            </div>
+                        </article>
+                    </section>
+
+                    <aside class="sidebar">
+                        <div class="widget">
+                            <h3 class="widget-title">קטגוריות</h3>
+                            <ul class="category-list">
+                                <li class="category-item"><a href="#" onclick="showPage('books')">ספרים (2023)</a></li>
+                                <li class="category-item"><a href="#" onclick="showPage('books')">ספרים (2022)</a></li>
+                                <li class="category-item"><a href="#" onclick="showPage('books')">ספרים (2021)</a></li>
+                                <li class="category-item"><a href="#" onclick="showPage('restaurants')">מסעדות</a></li>
+                                <li class="category-item"><a href="#" onclick="showPage('shopping')" style="color: #e74c3c; font-weight: bold;">צרכנות</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="widget">
+                            <h3 class="widget-title">אודותינו</h3>
+                            <p>המלצות על מוצרים, שירותים וטיפים לצרכנות חכמה ומושכלת.</p>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo" aria-label="מידע על האתר">
+        <div class="container">
+            <div class="footer-content">
+                <section class="footer-section" aria-labelledby="footer-about">
+                    <h3 id="footer-about">כדאי לדעת</h3>
+                    <p role="text">האתר לחיים הטובים - טיפים והמלצות בתחומי האוכל, התרבות והפנאי</p>
+                </section>
+                <section class="footer-section" aria-labelledby="footer-categories">
+                    <h3 id="footer-categories">קטגוריות</h3>
+                    <nav aria-label="קישורי פוטר לקטגוריות">
+                        <ul style="list-style: none; padding: 0;" role="list">
+                            <li role="listitem"><a href="#" onclick="showPage('books')" aria-label="עבור לביקורות ספרים">ביקורות ספרים</a></li>
+                            <li role="listitem"><a href="#" onclick="showPage('restaurants')" aria-label="עבור לביקורות מסעדות">ביקורות מסעדות</a></li>
+                            <li role="listitem"><a href="#" onclick="showPage('shopping')" aria-label="עבור לטיפי צרכנות">טיפי צרכנות</a></li>
+                        </ul>
+                    </nav>
+                </section>
+                <section class="footer-section" aria-labelledby="footer-contact">
+                    <h3 id="footer-contact">צור קשר</h3>
+                    <address>
+                        לשאלות והצעות:<br>
+                        <a href="mailto:info@kedailadaat.com" aria-label="שלח מייל ליצירת קשר">info@kedailadaat.com</a>
+                    </address>
+                </section>
+            </div>
+            <div class="footer-bottom">
+                <p role="text">&copy; 2025 כדאי לדעת. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced accessibility functions
+        function announceToScreenReader(message) {
+            const announcement = document.createElement('div');
+            announcement.setAttribute('aria-live', 'polite');
+            announcement.setAttribute('aria-atomic', 'true');
+            announcement.className = 'sr-only';
+            announcement.textContent = message;
+            document.body.appendChild(announcement);
+            
+            // Remove after announcement
+            setTimeout(() => {
+                document.body.removeChild(announcement);
+            }, 1000);
+        }
+
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = ['home', 'books', 'restaurants', 'shopping', 'food', 'lifestyle', 'culture', 'arts', 'about', 'reviews', 'recommendations'];
+            pages.forEach(page => {
+                const pageElement = document.getElementById(page + '-page');
+                const navElement = document.getElementById('nav-' + page);
+                
+                if (pageElement) {
+                    pageElement.classList.remove('active');
+                    pageElement.setAttribute('aria-hidden', 'true');
+                }
+                if (navElement) {
+                    navElement.classList.remove('active');
+                    navElement.removeAttribute('aria-current');
+                }
+            });
+            
+            // Show selected page (fallback to existing pages for now)
+            let targetPageId = pageId;
+            if (['food', 'lifestyle', 'culture', 'arts', 'about', 'reviews', 'recommendations'].includes(pageId)) {
+                // Map new categories to existing pages for now
+                const pageMapping = {
+                    'food': 'restaurants',
+                    'lifestyle': 'home', 
+                    'culture': 'books',
+                    'arts': 'books',
+                    'about': 'home',
+                    'reviews': 'home',
+                    'recommendations': 'home'
+                };
+                targetPageId = pageMapping[pageId] || 'home';
+            }
+            
+            const targetPage = document.getElementById(targetPageId + '-page');
+            const targetNav = document.getElementById('nav-' + pageId);
+            
+            if (targetPage) {
+                targetPage.classList.add('active');
+                targetPage.removeAttribute('aria-hidden');
+                
+                // Focus on main content for screen readers
+                const mainHeading = targetPage.querySelector('h1, h2');
+                if (mainHeading) {
+                    mainHeading.focus();
+                }
+            }
+            if (targetNav) {
+                targetNav.classList.add('active');
+                targetNav.setAttribute('aria-current', 'page');
+            }
+
+            // Announce page change to screen readers
+            const pageNames = {
+                'home': 'עמוד הבית',
+                'books': 'ביקורות ספרים',
+                'restaurants': 'ביקורות מסעדות',
+                'shopping': 'טיפי צרכנות',
+                'food': 'אוכל',
+                'lifestyle': 'סגנון חיים',
+                'culture': 'תרבות ובידור',
+                'arts': 'אמנות',
+                'about': 'אודות',
+                'reviews': 'ביקורות',
+                'recommendations': 'המלצות'
+            };
+            
+            announceToScreenReader(`עברת ל${pageNames[pageId] || pageNames[targetPageId]}`);
+        }
+
+        // Keyboard navigation support
+        document.addEventListener('keydown', function(event) {
+            // Handle escape key to close/return to main
+            if (event.key === 'Escape') {
+                showPage('home');
+                document.getElementById('nav-home').focus();
+            }
+            
+            // Handle arrow keys in navigation menu
+            if (event.target.closest('.nav-list') || event.target.closest('.secondary-nav-list')) {
+                const navItems = Array.from(document.querySelectorAll('.nav-link, .secondary-nav-link'));
+                const currentIndex = navItems.indexOf(event.target);
+                
+                let nextIndex;
+                
+                switch(event.key) {
+                    case 'ArrowRight':
+                        event.preventDefault();
+                        nextIndex = currentIndex > 0 ? currentIndex - 1 : navItems.length - 1;
+                        navItems[nextIndex].focus();
+                        break;
+                    case 'ArrowLeft':
+                        event.preventDefault();
+                        nextIndex = currentIndex < navItems.length - 1 ? currentIndex + 1 : 0;
+                        navItems[nextIndex].focus();
+                        break;
+                    case 'Home':
+                        event.preventDefault();
+                        navItems[0].focus();
+                        break;
+                    case 'End':
+                        event.preventDefault();
+                        navItems[navItems.length - 1].focus();
+                        break;
+                }
+            }
+        });
+
+        // Enhanced search functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function(event) {
+                    if (event.key === 'Enter') {
+                        event.preventDefault();
+                        const searchTerm = this.value.trim();
+                        if (searchTerm) {
+                            announceToScreenReader(`מחפש: ${searchTerm}`);
+                            // Here you would implement actual search functionality
+                            console.log('חיפוש:', searchTerm);
+                        }
+                    }
+                });
+            }
+
+            // Set initial ARIA states
+            const pages = ['home', 'books', 'restaurants', 'shopping', 'food', 'lifestyle', 'culture', 'arts', 'about', 'reviews', 'recommendations'];
+            pages.forEach(page => {
+                const pageElement = document.getElementById(page + '-page');
+                if (pageElement && !pageElement.classList.contains('active')) {
+                    pageElement.setAttribute('aria-hidden', 'true');
+                }
+            });
+
+            // Set initial aria-current for active nav item
+            const activeNav = document.querySelector('.nav-link.active');
+            if (activeNav) {
+                activeNav.setAttribute('aria-current', 'page');
+            }
+        });
+
+        // Add click handlers with keyboard support
+        function addAccessibleClickHandler(element, handler) {
+            if (!element) return;
+            
+            element.addEventListener('click', handler);
+            element.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    handler(event);
+                }
+            });
+        }
+
+        // Make elements properly focusable
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ensure all interactive elements are focusable
+            const interactiveElements = document.querySelectorAll('a[onclick], button, [role="button"]');
+            interactiveElements.forEach(element => {
+                if (!element.hasAttribute('tabindex')) {
+                    element.setAttribute('tabindex', '0');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
